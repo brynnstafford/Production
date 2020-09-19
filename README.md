@@ -1,13 +1,16 @@
 # Production Project
 
-# Main.java
+# -Main.java
 runs the main production log 
-# Controller.java
+# -Controller.java
 manages the functions used to keep track of production log information
-# sample.fxml
+# -sample.fxml
 code for the structure of the production log- with help from scene builder
-# style.css
+# -style.css
 code for the color, font, and other formats of the production log
+
+# -Package.brynnS.pdf
+project class diagram
 
 # Problem Statement
 Scenario
