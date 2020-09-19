@@ -1,5 +1,14 @@
 # Production Project
 
+# Main.java
+runs the production log 
+# Controller.java
+conrolls the functions used to keep track of production information
+# sample.fxml
+code for the structure of the production log, with help from scene builder
+# style.css
+code for the color, font, and other formatas of the production log
+
 # Problem Statement
 Scenario
 
