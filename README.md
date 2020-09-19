@@ -1,11 +1,11 @@
 # Production Project
 
 # Main.java
-runs the production log 
+runs the main production log 
 # Controller.java
-conrolls the functions used to keep track of production information
+manages the functions used to keep track of production log information
 # sample.fxml
-code for the structure of the production log, with help from scene builder
+code for the structure of the production log- with help from scene builder
 # style.css
 code for the color, font, and other formats of the production log
 
