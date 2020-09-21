@@ -97,6 +97,8 @@ public class Controller {
          String insertSql = "INSERT INTO Product(type, manufacturer, name) "
          + "VALUES ( 'AUDIO', 'Apple', 'iPod' )";
 
+         stmt.executeUpdate(insertSql);
+
          //String empId = txtEmpId.getText();
 
          /*String insertSql = "INSERT INTO EMPLOYEES(employee_id, first_name, last_name, email, "
