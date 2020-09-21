@@ -26,6 +26,7 @@ import javafx.scene.control.TextField;
 
 import java.sql.*;
 
+// controller
 public class Controller {
    @FXML
    private Label lblOutput1; // label output for add product
@@ -40,29 +41,33 @@ public class Controller {
       lblOutput2.setText("(System.out.println)");
    }
 
-
    @FXML
    private Label lblOutput;
 
+   @FXML
+   private TextField txtProductName;
+
+   /*
    @FXML
    private TextField txtEmpId;
 
    @FXML
    private Label lblEmpInfo;
+   */
 
    @FXML
    private ComboBox<String> cmbQuantity;
-
-   @FXML
-   void showDetails(ActionEvent event) {
-      connectToDB();
-   }
 
    // employee combo box drop down 1-10
    public void initialize() {
       for (int count = 1; count <= 10; count++) {
          cmbQuantity.getItems().add(String.valueOf(count));
       }
+   }
+
+   @FXML
+   void showDetails(ActionEvent event) {
+      connectToDB();
    }
 
    // connect to database, set up h2 driver
@@ -87,15 +92,21 @@ public class Controller {
          //STEP 3: Execute a query
          stmt = conn.createStatement();
 
-         String empId = txtEmpId.getText();
+         //String productName = txtProductName.getText();
 
-         String insertSql = "INSERT INTO EMPLOYEES(employee_id, first_name, last_name, email, "
+         String insertSql = "INSERT INTO Product(type, manufacturer, name) "
+         + "VALUES ( 'AUDIO', 'Apple', 'iPod' )";
+
+         //String empId = txtEmpId.getText();
+
+         /*String insertSql = "INSERT INTO EMPLOYEES(employee_id, first_name, last_name, email, "
             + "phone_int, hire_date, job_id, salary, department_id) VALUES (300, 'Vlad', "
             + "'Hardy', 'vhardy', '22', '1987-06-17', 'AD_PRES', 200000, 90)";
+          */
 
-         stmt.executeUpdate(insertSql);
+         // stmt.executeUpdate(insertSql);
 
-         String sql = "SELECT email, first_name, last_name "
+         /*String sql = "SELECT email, first_name, last_name "
             + "FROM employees "
             + "where employee_id = " + empId;
 
@@ -107,6 +118,7 @@ public class Controller {
          String empLastName = rs.getString(3);
 
          lblEmpInfo.setText(empFirstName + " " + empLastName + " " + empEmail + "@tiktok.com");
+         */
 
          // STEP 4: Clean-up environment
          stmt.close();
