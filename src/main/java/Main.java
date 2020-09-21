@@ -21,12 +21,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
-//-----------------------------------------------------------------------------
-// Global space- constants, functions, data structures, etc.
-//-----------------------------------------------------------------------------
-
-// main calls functions to run Production log window
 public class Main extends Application {
 
    public static void main(String[] args) {
@@ -35,12 +29,15 @@ public class Main extends Application {
 
    @Override
    public void start(Stage primaryStage) throws Exception {
+      // use sample.fxml as format
       Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
+      // build scene
       Scene scene = new Scene(root, 300, 275);
 
-      primaryStage.setTitle("Production Project");
+      primaryStage.setTitle("Production"); // title
       primaryStage.setScene(scene);
       primaryStage.show();
+
    }
 }
