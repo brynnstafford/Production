@@ -10,7 +10,7 @@ code for the structure of the production log- with help from scene builder
 code for the color, font, and other formats of the production log
 
 # -Package.brynnS.pdf
-project class diagram
+project class diagram pdf
 
 # Problem Statement
 Scenario
