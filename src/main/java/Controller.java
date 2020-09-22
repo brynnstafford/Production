@@ -45,7 +45,7 @@ public class Controller {
    private Label lblOutput;
 
    @FXML
-   private TextField txtProductName;
+   private TextField txtProductId;
 
    /*
    @FXML
@@ -92,12 +92,14 @@ public class Controller {
          //STEP 3: Execute a query
          stmt = conn.createStatement();
 
-         //String productName = txtProductName.getText();
+         //String productName = txtProductId.getText();
 
          String insertSql = "INSERT INTO Product(type, manufacturer, name) "
          + "VALUES ( 'AUDIO', 'Apple', 'iPod' )";
 
          stmt.executeUpdate(insertSql);
+
+
 
          //String empId = txtEmpId.getText();
 
