@@ -14,33 +14,30 @@
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import java.sql.*;
 
 // controller
 public class Controller {
    @FXML
    private Label lblProductOutput; // label output for add product
    @FXML
-   private Label lblOutput2; // label output for record production
+   private Label lblOutput2;       // label output for record production
 
-
+   // saves displayProduct to database and prints "Product added"
    public void displayProduct(ActionEvent actionEvent) {
-      connectToDbAndAddProduct();
+      saveToDb();
       lblProductOutput.setText("Product Added");
    }
 
    public void display2(ActionEvent actionEvent) {
+
       lblOutput2.setText("(System.out.println)");
    }
 
@@ -50,18 +47,11 @@ public class Controller {
    @FXML
    private TextField txtProductId;
 
-   /*
-   @FXML
-   private TextField txtEmpId;
 
    @FXML
-   private Label lblEmpInfo;
-   */
+   private ComboBox<String> productCmbQuantity;  // fxml ID for product combo box
 
-   @FXML
-   private ComboBox<String> productCmbQuantity;
-
-   // employee combo box drop down 1-10
+   // product combo box drop down 1-10
    public void initialize() {
       for (int count = 1; count <= 10; count++) {
          productCmbQuantity.getItems().add(String.valueOf(count));
@@ -70,14 +60,13 @@ public class Controller {
 
 
 
-
    @FXML
    void showDetails(ActionEvent event) {
-      connectToDbAndAddProduct();
+      saveToDb();
    }
 
    // connect to database, set up h2 driver
-   public void connectToDbAndAddProduct() {
+   public void saveToDb() {
       final String JDBC_DRIVER = "org.h2.Driver";
       final String DB_URL = "jdbc:h2:./res/HR";
 
@@ -100,36 +89,17 @@ public class Controller {
 
          //String productName = txtProductId.getText();
 
+         // product state
+         String productType = "Audio";
+         String productManufacturer = "Apple";
+         String productName = "Ipod";
+
          String insertSql = "INSERT INTO Product(type, manufacturer, name) "
-         + "VALUES ( 'AUDIO', 'Apple', 'iPod' )";
+         + "VALUES ( '"+productType+"', '"+productManufacturer+"', '"+productName+"' )";
 
          stmt.executeUpdate(insertSql);
          System.out.println(insertSql);
 
-
-
-         //String empId = txtEmpId.getText();
-
-         /*String insertSql = "INSERT INTO EMPLOYEES(employee_id, first_name, last_name, email, "
-            + "phone_int, hire_date, job_id, salary, department_id) VALUES (300, 'Vlad', "
-            + "'Hardy', 'vhardy', '22', '1987-06-17', 'AD_PRES', 200000, 90)";
-          */
-
-         // stmt.executeUpdate(insertSql);
-
-         /*String sql = "SELECT email, first_name, last_name "
-            + "FROM employees "
-            + "where employee_id = " + empId;
-
-         ResultSet rs = stmt.executeQuery(sql);
-
-         rs.next();
-         String empEmail = rs.getString(1);
-         String empFirstName = rs.getString(2);
-         String empLastName = rs.getString(3);
-
-         lblEmpInfo.setText(empFirstName + " " + empLastName + " " + empEmail + "@tiktok.com");
-         */
 
          // STEP 4: Clean-up environment
          stmt.close();

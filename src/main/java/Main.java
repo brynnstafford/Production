@@ -36,7 +36,7 @@ public class Main extends Application {
       // build scene
       Scene scene = new Scene(root, 300, 275);
 
-      primaryStage.setTitle("Production"); // title
+      primaryStage.setTitle("Brynn's Awesome Production Project"); // title
       primaryStage.setScene(scene);
       primaryStage.show();
 
