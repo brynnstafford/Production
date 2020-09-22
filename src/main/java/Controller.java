@@ -20,6 +20,7 @@ import java.sql.Statement;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -29,12 +30,14 @@ import java.sql.*;
 // controller
 public class Controller {
    @FXML
-   private Label lblOutput1; // label output for add product
+   private Label lblProductOutput; // label output for add product
    @FXML
    private Label lblOutput2; // label output for record production
 
-   public void display1(ActionEvent actionEvent) {
-      lblOutput1.setText("(System.out.println)");
+
+   public void displayProduct(ActionEvent actionEvent) {
+      connectToDbAndAddProduct();
+      lblProductOutput.setText("Product Added");
    }
 
    public void display2(ActionEvent actionEvent) {
@@ -56,22 +59,25 @@ public class Controller {
    */
 
    @FXML
-   private ComboBox<String> cmbQuantity;
+   private ComboBox<String> productCmbQuantity;
 
    // employee combo box drop down 1-10
    public void initialize() {
       for (int count = 1; count <= 10; count++) {
-         cmbQuantity.getItems().add(String.valueOf(count));
+         productCmbQuantity.getItems().add(String.valueOf(count));
       }
    }
 
+
+
+
    @FXML
    void showDetails(ActionEvent event) {
-      connectToDB();
+      connectToDbAndAddProduct();
    }
 
    // connect to database, set up h2 driver
-   public void connectToDB() {
+   public void connectToDbAndAddProduct() {
       final String JDBC_DRIVER = "org.h2.Driver";
       final String DB_URL = "jdbc:h2:./res/HR";
 
@@ -98,6 +104,7 @@ public class Controller {
          + "VALUES ( 'AUDIO', 'Apple', 'iPod' )";
 
          stmt.executeUpdate(insertSql);
+         System.out.println(insertSql);
 
 
 
