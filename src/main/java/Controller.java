@@ -49,12 +49,12 @@ public class Controller {
 
 
    @FXML
-   private ComboBox<String> productCmbQuantity;  // fxml ID for product combo box
+   private ComboBox<String> produceCmbQuantity;  // fxml ID for product combo box
 
    // product combo box drop down 1-10
    public void initialize() {
       for (int count = 1; count <= 10; count++) {
-         productCmbQuantity.getItems().add(String.valueOf(count));
+         produceCmbQuantity.getItems().add(String.valueOf(count));
       }
    }
 
