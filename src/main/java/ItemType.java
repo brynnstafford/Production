@@ -7,9 +7,15 @@ public enum ItemType {
 
    public String code;
 
-   ItemType(String fields) {
-      code = fields;
+   ItemType(String code) {
+      this.code = code;
    }
 
+   /*
+   @Override
+   public String toString() {
+      return code;
+   }
+   */
 }
 

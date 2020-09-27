@@ -12,12 +12,13 @@
  *          of these items and store them in a collection..
  *******************************************************************************/
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -38,8 +39,7 @@ public class Controller {
    @FXML
    private ComboBox<String> produceCmbQuantity;  // fxml ID for product combo box
    @FXML
-   private ChoiceBox<String> produceCbQuantity;
-
+   private ChoiceBox<ItemType> produceCbQuantity;
 
 
    // saves displayProduct to database and prints "Product added"
@@ -63,13 +63,11 @@ public class Controller {
          //getSelectionModel().selectFirst(); used scene builder to set default
       }
 
-
       //Fill the ChoiceBox with the types. You can use an enhanced for loop or addAll.
       // All the constants of an enum type can be obtained by calling the implicit
       // public static T[] values() method
-      for (ItemType it : ItemType.values()) {
-         //produceCbQuantity.getItems().addAll(ItemType.values());
-      }
+
+      //produceCbQuantity.getItems().addAll(ItemType.values());
 /*
       produceCbQuantity.getItems().addAll(ItemType.values(it + " " + it.code));
 
