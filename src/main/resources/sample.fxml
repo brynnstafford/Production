@@ -36,7 +36,7 @@
                     <Label text="Manufacturer" GridPane.rowIndex="1" />
                     <Label text="Item Type" GridPane.rowIndex="2" />
                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-               <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               <ChoiceBox fx:id="productCbQuantity" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 </GridPane>
                 <Button layoutX="214.0" layoutY="45.0" mnemonicParsing="false" onAction="#displayProduct" text="Add Product" />
                 <Label layoutX="55.0" layoutY="137.0" text="Existing Products" />

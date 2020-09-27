@@ -21,7 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-// main loads and builds fxml production interface
+// main loads and builds fxml production interface (driver class?)
 public class Main extends Application {
 
    public static void main(String[] args) {

@@ -17,8 +17,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -29,6 +31,16 @@ public class Controller {
    private Label lblProductOutput; // label output for add product
    @FXML
    private Label lblOutput2;       // label output for record production
+   @FXML
+   private Label lblOutput;
+   @FXML
+   private TextField txtProductId;
+   @FXML
+   private ComboBox<String> produceCmbQuantity;  // fxml ID for product combo box
+   @FXML
+   private ChoiceBox<String> produceCbQuantity;
+
+
 
    // saves displayProduct to database and prints "Product added"
    public void displayProduct(ActionEvent actionEvent) {
@@ -36,26 +48,36 @@ public class Controller {
       lblProductOutput.setText("Product Added");
    }
 
-   public void display2(ActionEvent actionEvent) {
 
+   // output for record production method (need to change name)
+   public void display2(ActionEvent actionEvent) {
       lblOutput2.setText("(System.out.println)");
    }
 
-   @FXML
-   private Label lblOutput;
 
-   @FXML
-   private TextField txtProductId;
-
-
-   @FXML
-   private ComboBox<String> produceCmbQuantity;  // fxml ID for product combo box
-
-   // product combo box drop down 1-10
+   // set drop down box's values for product line, produce etc.
    public void initialize() {
       for (int count = 1; count <= 10; count++) {
          produceCmbQuantity.getItems().add(String.valueOf(count));
+         produceCmbQuantity.setEditable(true);
+         //getSelectionModel().selectFirst(); used scene builder to set default
       }
+
+
+      //Fill the ChoiceBox with the types. You can use an enhanced for loop or addAll.
+      // All the constants of an enum type can be obtained by calling the implicit
+      // public static T[] values() method
+      for (ItemType it : ItemType.values()) {
+         //produceCbQuantity.getItems().addAll(ItemType.values());
+      }
+/*
+      produceCbQuantity.getItems().addAll(ItemType.values(it + " " + it.code));
+
+      for (ItemType it : ItemType.values()) {
+         //System.out.println(it + " " + it.code);
+         produceCbQuantity.getItems().add(String.valueOf(it + " " + it.code));
+      }
+*/
    }
 
 
