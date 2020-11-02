@@ -5,7 +5,7 @@ public enum ItemType {
    VISUAL_MOBILE("VM")
    ;
 
-   public String code;
+   public final String code;
 
    ItemType(String code) {
       this.code = code;

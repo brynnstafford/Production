@@ -39,7 +39,7 @@ public class Controller {
    @FXML
    private ComboBox<String> produceCmbQuantity;  // fxml ID for product combo box
    @FXML
-   private ChoiceBox<ItemType> produceCbQuantity;
+   private ChoiceBox<ItemType> productCbItemType;
 
 
    // saves displayProduct to database and prints "Product added"
@@ -63,21 +63,12 @@ public class Controller {
          //getSelectionModel().selectFirst(); used scene builder to set default
       }
 
-      
-
-      //Fill the ChoiceBox with the types. You can use an enhanced for loop or addAll.
-      // All the constants of an enum type can be obtained by calling the implicit
-      // public static T[] values() method
-
-      //produceCbQuantity.getItems().addAll(ItemType.values());
-/*
-      produceCbQuantity.getItems().addAll(ItemType.values(it + " " + it.code));
 
       for (ItemType it : ItemType.values()) {
          //System.out.println(it + " " + it.code);
-         produceCbQuantity.getItems().add(String.valueOf(it + " " + it.code));
+         productCbItemType.getItems().add(it);
       }
-*/
+
    }
 
 
