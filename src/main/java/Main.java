@@ -21,7 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-// main loads and builds fxml production interface (driver class?)
+// main loads and builds fxml production interface (driver class)
 public class Main extends Application {
 
    public static void main(String[] args) {
@@ -36,7 +36,7 @@ public class Main extends Application {
       // build scene
       Scene scene = new Scene(root, 300, 275);
 
-      primaryStage.setTitle("Brynn's Awesome Production Project"); // title
+      primaryStage.setTitle("Brynn's Production Project"); // title
       primaryStage.setScene(scene);
       primaryStage.show();
 

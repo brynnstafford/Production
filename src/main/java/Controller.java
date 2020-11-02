@@ -63,6 +63,8 @@ public class Controller {
          //getSelectionModel().selectFirst(); used scene builder to set default
       }
 
+      
+
       //Fill the ChoiceBox with the types. You can use an enhanced for loop or addAll.
       // All the constants of an enum type can be obtained by calling the implicit
       // public static T[] values() method
@@ -114,6 +116,7 @@ public class Controller {
          String productManufacturer = "Apple";
          String productName = "Ipod";
 
+         // string instrts type, ma
          String insertSql = "INSERT INTO Product(type, manufacturer, name) "
          + "VALUES ( '"+productType+"', '"+productManufacturer+"', '"+productName+"' )";
 
