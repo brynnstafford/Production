@@ -6,8 +6,4 @@ public interface Item {
    String getManufacturer();
 
 
-
-
-
-
 }

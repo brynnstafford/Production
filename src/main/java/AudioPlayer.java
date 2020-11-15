@@ -1,15 +1,17 @@
-public class AudioPlayer extends Product
-   implements MultimediaControl {
+public class AudioPlayer extends Product implements MultimediaControl {
 
-   String supportedAudioFormats;
-
-   String supportedPlaylistFormats;
+   public String supportedAudioFormats;
+   public String supportedPlaylistFormats;
 
    public AudioPlayer(String name,
                       String manufacturer,
                       String supportedAudioFormats,
                       String supportedPlaylistFormats) {
-      
+      super();
+      this.name = name;
+      this.manufacturer = manufacturer;
+      this.supportedAudioFormats = supportedAudioFormats;
+      this.supportedPlaylistFormats = supportedPlaylistFormats;
 
    }
 
@@ -32,5 +34,10 @@ public class AudioPlayer extends Product
    @Override
    public void next() {
 
+   }
+
+   @Override
+   public int getId() {
+      return 0;
    }
 }

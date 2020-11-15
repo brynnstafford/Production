@@ -1,26 +1,55 @@
-public abstract class Product {
-   private int id;
-   private String type;
-   private String manufacturer;
-   private String name;
+// Create an abstract type called Product that will implement the
+// Item interface. Product will implement the basic functionality
+// that all items on a production line should have
+public abstract class Product implements Item {
+   public int id;
+   public ItemType type;
+   public String manufacturer;
+   public String name;
 
-   int getId(){return id;}
-   void setName(String name){}
-   String getName(){return name;}
-   void setManufacturer(String name){}
-   String getManufacturer(){return name;}
 
-   void setProduct(String n, String m, String t){
-      n = name;
-      m = manufacturer;
-      t = type;
+   // Add a constructor that will take in the name, manufacturer,
+   // and type of the product and set them to the field variables.
+   public Product(String name, String manufacturer, ItemType type){
+      this.name = name;
+      this.manufacturer = manufacturer;
+      this.type = type;
+   }
+
+   public Product() {
+
    }
 
    public String toString() {
-      return "Name: " + name
-         + "Manufacturer: " + manufacturer
-         + "Type: " + type;
+      return "Name: " + this.name
+         + "Manufacturer: " + this.manufacturer
+         + "Type: " + this.type;
    }
+
+
+
+   // Complete the methods from the interface Item.
+
+   public int getID() {
+      return this.id;
+   }
+
+   public void setName(String name) {
+      this.name = name;
+   }
+
+   public String getName() {
+      return this.name;
+   }
+
+   public void setManufacturer(String manufacturer) {
+      this.manufacturer = manufacturer;
+   }
+
+   public String getManufacturer() {
+      return this.manufacturer;
+   }
+
 
 
 }

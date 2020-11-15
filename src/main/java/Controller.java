@@ -55,15 +55,17 @@ public class Controller {
    }
 
 
-   // set drop down box's values for product line, produce etc.
+
    public void initialize() {
+
+      // set produce combobox values 1-10 (editable)
       for (int count = 1; count <= 10; count++) {
          produceCmbQuantity.getItems().add(String.valueOf(count));
          produceCmbQuantity.setEditable(true);
          //getSelectionModel().selectFirst(); used scene builder to set default
       }
 
-
+      // set product choicebox values to ItemType values
       for (ItemType it : ItemType.values()) {
          //System.out.println(it + " " + it.code);
          productCbItemType.getItems().add(it);
