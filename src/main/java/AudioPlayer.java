@@ -15,36 +15,43 @@ public class AudioPlayer extends Product implements MultimediaControl {
       this.manufacturer = manufacturer;
       this.supportedAudioFormats = supportedAudioFormats;
       this.supportedPlaylistFormats = supportedPlaylistFormats;
-
+      this.type = ItemType.AUDIO;
    }
 
    public String toString() {
       return "Name: " + this.name
          + "Manufacturer: " + this.manufacturer
          + "Supported Audio Formats: " + this.supportedAudioFormats
-         + "Supported Playlist Formats: " + this.supportedPlaylistFormats;
+         + "Supported Playlist Formats: " + this.supportedPlaylistFormats
+         + "Item Type: " + this.type;
    }
 
    @Override
    public void play() {
+      System.out.println("Playing");
 
    }
 
    @Override
    public void stop() {
+      System.out.println("Stopped");
 
    }
 
    @Override
    public void previous() {
+      System.out.println("Previous");
 
    }
 
    @Override
    public void next() {
+      System.out.println("Next");
 
    }
 
+   // This is only here because of error (probs bc I dont have
+   // a widget class that tests product)... need to fix this
    @Override
    public int getId() {
       return 0;
