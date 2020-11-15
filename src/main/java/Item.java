@@ -5,5 +5,4 @@ public interface Item {
    void setManufacturer(String name);
    String getManufacturer();
 
-
 }
