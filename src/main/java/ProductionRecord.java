@@ -7,10 +7,10 @@
 import java.util.Date;
 public class ProductionRecord {
 
-   private int productionNumber;
-   private int productID;
-   private String serialNumber;
-   private Date dateProduced;
+   int productionNumber;
+   int productID;
+   String serialNumber;
+   Date dateProduced;
 
 
    // Make one constructor that just has a parameter for the productID.
@@ -18,7 +18,8 @@ public class ProductionRecord {
    // from the user interface.
    public ProductionRecord(int productID){
       this.productionNumber = 0;
-      this.serialNumber = "0";
+      this.productID = productID;
+      this.serialNumber = String.valueOf(0);
       this.dateProduced = new Date();
    }
 
@@ -30,7 +31,7 @@ public class ProductionRecord {
    }
 
    public int getProductionNumber(){
-      return this.productionNumber;
+      return productionNumber;
    }
 
    public void setProductID(int productID){
@@ -38,7 +39,7 @@ public class ProductionRecord {
    }
 
    public int getProductID(){
-      return this.productID;
+      return productID;
    }
 
    public void setSerialNumber(String serialNumber){
@@ -46,7 +47,7 @@ public class ProductionRecord {
    }
 
    public String getSerialNumber(){
-      return this.serialNumber;
+      return serialNumber;
    }
 
    public void setDateProduced(Date dateProduced){
@@ -54,7 +55,7 @@ public class ProductionRecord {
    }
 
    public Date getDateProduced(){
-      return this.dateProduced;
+      return dateProduced;
    }
 
 

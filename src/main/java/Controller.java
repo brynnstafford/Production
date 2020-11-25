@@ -73,6 +73,9 @@ public class Controller {
       }
 
    }
+
+   // Demonstrate this functionality in your user interface. For example, you could use the code below and
+   // call testMultimedia in your initialize method or you could do something more elaborate in the GUI.
    public static void testMultimedia() {
 
       AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",
