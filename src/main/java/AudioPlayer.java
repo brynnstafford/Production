@@ -20,10 +20,11 @@ public class AudioPlayer extends Product implements MultimediaControl {
 
    public String toString() {
       return "Name: " + this.name
-         + "Manufacturer: " + this.manufacturer
-         + "Supported Audio Formats: " + this.supportedAudioFormats
-         + "Supported Playlist Formats: " + this.supportedPlaylistFormats
-         + "Item Type: " + this.type;
+         + "\nManufacturer: " + this.manufacturer
+         //+ "\nItem Type: " + this.type
+         + "\nType: " + this.type
+         + "\nSupported Audio Formats: " + this.supportedAudioFormats
+         + "\nSupported Playlist Formats: " + this.supportedPlaylistFormats;
    }
 
    @Override
@@ -34,7 +35,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
 
    @Override
    public void stop() {
-      System.out.println("Stopped");
+      System.out.println("Stopping");
 
    }
 
@@ -50,10 +51,4 @@ public class AudioPlayer extends Product implements MultimediaControl {
 
    }
 
-   // This is only here because of error (probs bc I dont have
-   // a widget class that tests product)... need to fix this
-   @Override
-   public int getId() {
-      return 0;
-   }
 }

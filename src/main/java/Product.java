@@ -7,17 +7,17 @@ public abstract class Product implements Item {
    public String manufacturer;
    public String name;
 
-
    // Add a constructor that will take in the name, manufacturer,
    // and type of the product and set them to the field variables.
-   public Product(String name, String manufacturer, ItemType type){
+   public Product(String name,
+                  String manufacturer,
+                  ItemType type) {
       this.name = name;
       this.manufacturer = manufacturer;
       this.type = type;
    }
 
    public Product() {
-
    }
 
    public String toString() {
@@ -25,8 +25,6 @@ public abstract class Product implements Item {
          + "\nManufacturer: " + manufacturer
          + "\nType: " + type.getType();
    }
-
-
 
 
    // Complete the methods from the interface Item.
@@ -55,9 +53,9 @@ public abstract class Product implements Item {
 }
 
 class Widget extends Product {
-
-   Widget(String name, String manufacturer, ItemType type) {
-
+   Widget(String name,
+          String manufacturer,
+          ItemType type) {
       super(name, manufacturer, type);
    }
 
