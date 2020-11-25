@@ -1,11 +1,13 @@
 // Create a class called Screen that implements ScreenSpec.
 // Add three fields
 public class Screen implements ScreenSpec{
-   public String resolution;
-   public int refreshRate;
-   public int responseTime;
+   String resolution;
+   int refreshRate;
+   int responseTime;
 
-   public Screen(String resolution, int refreshRate, int responseTime){
+   public Screen(String resolution,
+                 int refreshRate,
+                 int responseTime){
       this.resolution = resolution;
       this.refreshRate = refreshRate;
       this.responseTime = responseTime;
@@ -16,8 +18,8 @@ public class Screen implements ScreenSpec{
    @Override
    public String toString(){
       return "Resolution: " + this.resolution
-         + "Refresh rate: " + this.refreshRate
-         + "Response time: "+ this.responseTime;
+         + "\nRefresh rate: " + this.refreshRate
+         + "\nResponse time: "+ this.responseTime;
    }
 
 

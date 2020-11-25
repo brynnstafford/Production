@@ -4,13 +4,14 @@ public class MoviePlayer extends Product implements MultimediaControl {
 
    // Add 2 fields to this class called screen and monitorType and assign
    // appropriate types to them.
-   public Screen screen;
-   public MonitorType monitorType;
+   Screen screen;
+   MonitorType monitorType;
 
    public MoviePlayer(String name,
                       String manufacturer,
                       Screen screen,
-                      MonitorType monitorType){
+                      MonitorType monitorType) {
+      super();
       this.name = name;
       this.manufacturer = manufacturer;
       this.screen = screen;
@@ -20,17 +21,12 @@ public class MoviePlayer extends Product implements MultimediaControl {
 
    public String toString() {
       return "Name: " + this.name
-         + "Manufacturer: " + this.manufacturer
-         + "Screen: " + this.screen
-         + "Monitor Type: " + this.monitorType
-         + "Item Type: " + this.type;
+         + "\nManufacturer: " + this.manufacturer
+         + "\nScreen: " + this.screen
+         + "\nMonitor Type: " + this.monitorType
+         + "\nItem Type: " + this.type;
    }
 
-   // just like audioPlayer there is an error if getID method isnt here. Need
-   @Override
-   public int getId() {
-      return 0;
-   }
 
    @Override
    public void play() {
@@ -40,7 +36,7 @@ public class MoviePlayer extends Product implements MultimediaControl {
 
    @Override
    public void stop() {
-      System.out.println("Stopped");
+      System.out.println("Stopping");
 
    }
 

@@ -17,8 +17,10 @@ public abstract class Product implements Item {
       this.type = type;
    }
 
+
    public Product() {
    }
+
 
    public String toString() {
       return "Name: " + name
@@ -30,7 +32,7 @@ public abstract class Product implements Item {
    // Complete the methods from the interface Item.
 
    public int getId() {
-      return this.id;
+      return id;
    }
 
    public void setName(String name) {
@@ -38,7 +40,7 @@ public abstract class Product implements Item {
    }
 
    public String getName() {
-      return this.name;
+      return name;
    }
 
    public void setManufacturer(String manufacturer) {
@@ -46,7 +48,7 @@ public abstract class Product implements Item {
    }
 
    public String getManufacturer() {
-      return this.manufacturer;
+      return manufacturer;
    }
 
 
