@@ -7,7 +7,7 @@
 import java.util.Date;
 public class ProductionRecord {
 
-   int productionNumber;
+   int productionNumber = 0;
    int productID;
    String serialNumber;
    Date dateProduced;
@@ -17,11 +17,30 @@ public class ProductionRecord {
    // This will be the constructor called when the user records production
    // from the user interface.
    public ProductionRecord(int productID){
-      this.productionNumber = 0;
       this.productID = productID;
       this.serialNumber = String.valueOf(0);
       this.dateProduced = new Date();
    }
+
+
+   // overloaded constructor with all perameters
+   public ProductionRecord(int productionNumber,
+                           int productID,
+                           String serialNumber,
+                           Date dateProduced){
+      this.productionNumber = productionNumber;
+      this.productID = productID;
+      this.serialNumber = serialNumber;
+      this.dateProduced = dateProduced;
+   }
+
+   public String toString(){
+      return "Prod. Num: " + getProductionNumber()
+         + "\nProduct ID: " + getProductID()
+         + "\nSerial Num: " + getSerialNumber()
+         + "\nDate: " + getDateProduced();
+   }
+
 
 
 
