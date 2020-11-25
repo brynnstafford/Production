@@ -5,17 +5,22 @@ public enum ItemType {
    VISUAL_MOBILE("VM")
    ;
 
-   public final String code;
+   //public final String code;
+   public String code;
 
    ItemType(String code) {
       this.code = code;
    }
 
+   public String getType(){
+      return code;
+   }
 
+/*
    @Override
    public String toString() {
       return code;
    }
-
+*/
 }
 

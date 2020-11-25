@@ -21,16 +21,17 @@ public abstract class Product implements Item {
    }
 
    public String toString() {
-      return "Name: " + this.name
-         + "Manufacturer: " + this.manufacturer
-         + "Type: " + this.type;
+      return "Name: " + name
+         + "\nManufacturer: " + manufacturer
+         + "\nType: " + type.getType();
    }
+
 
 
 
    // Complete the methods from the interface Item.
 
-   public int getID() {
+   public int getId() {
       return this.id;
    }
 
@@ -51,5 +52,13 @@ public abstract class Product implements Item {
    }
 
 
+}
+
+class Widget extends Product {
+
+   Widget(String name, String manufacturer, ItemType type) {
+
+      super(name, manufacturer, type);
+   }
 
 }
