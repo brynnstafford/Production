@@ -11,6 +11,8 @@ public class ProductionRecord {
    int productID;
    String serialNumber;
    Date dateProduced;
+   Product product;
+   int itemCount;
 
 
    // Make one constructor that just has a parameter for the productID.
@@ -23,7 +25,7 @@ public class ProductionRecord {
    }
 
 
-   // overloaded constructor with all perameters
+   // overloaded constructor with all parameters
    public ProductionRecord(int productionNumber,
                            int productID,
                            String serialNumber,
@@ -32,6 +34,18 @@ public class ProductionRecord {
       this.productID = productID;
       this.serialNumber = serialNumber;
       this.dateProduced = dateProduced;
+   }
+
+   // overloaded ProductionRecord constructor to accept a product and an int
+   // which holds the count of the number of items
+   // of its type that have been created
+   public ProductionRecord(Product product,
+                           int itemCount){
+      this.product = product;
+      this.itemCount = itemCount;
+      // substring returns the the first 3 letters of the manufacturer
+      this.serialNumber = product.getManufacturer().substring(0,3) + product.getType().code; // + 5 digits;
+
    }
 
    public String toString(){

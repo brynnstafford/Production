@@ -20,6 +20,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
@@ -29,6 +30,11 @@ import javafx.scene.control.TextField;
 
 // controller
 public class Controller {
+
+   private ObservableList<Product> productLine;
+
+
+
    @FXML
    private Label lblProductOutput; // label output for add product
    @FXML

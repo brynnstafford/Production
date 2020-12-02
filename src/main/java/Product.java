@@ -51,6 +51,10 @@ public abstract class Product implements Item {
       return manufacturer;
    }
 
+   public ItemType getType() {return type;}
+
+   public void setType(ItemType type){this.type = type;}
+
 
 }
 
