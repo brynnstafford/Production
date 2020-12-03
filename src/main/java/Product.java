@@ -65,4 +65,6 @@ class Widget extends Product {
       super(name, manufacturer, type);
    }
 
+   public Widget(String productName, String productManufacturer, String productType) {
+   }
 }

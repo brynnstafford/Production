@@ -13,25 +13,23 @@
  *******************************************************************************/
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 // controller
 public class Controller {
 
-   private ObservableList<Product> productLine;
+   // Product line
+
+   // Production log
+
+   // Employee
 
 
 
@@ -44,95 +42,84 @@ public class Controller {
    @FXML
    private TextField txtProductId;
    @FXML
+   private TextField txtProductManufacturer;
+   @FXML
    private ComboBox<String> produceCmbQuantity;  // fxml ID for product combo box
    @FXML
    private ChoiceBox<ItemType> productCbItemType;
-
-
-   // saves displayProduct to database and prints "Product added"
-   public void displayProduct(ActionEvent actionEvent) {
-      saveToDb();
-      lblProductOutput.setText("Product Added");
-   }
-
-
-   // output for record production method (need to change name)
-   public void display2(ActionEvent actionEvent) {
-      lblOutput2.setText("(System.out.println)");
-   }
-
-
-
-   public void initialize() {
-
-      // set produce combobox values 1-10 (editable)
-      for (int count = 1; count <= 10; count++) {
-         produceCmbQuantity.getItems().add(String.valueOf(count));
-         produceCmbQuantity.setEditable(true);
-         //getSelectionModel().selectFirst(); used scene builder to set default
-      }
-
-      // set product choicebox values to ItemType values
-      for (ItemType it : ItemType.values()) {
-         //System.out.println(it + " " + it.code);
-         productCbItemType.getItems().add(it);
-      }
-
-   }
-
-   // Demonstrate this functionality in your user interface. For example, you could use the code below and
-   // call testMultimedia in your initialize method or you could do something more elaborate in the GUI.
-   public static void testMultimedia() {
-
-      AudioPlayer newAudioProduct = new AudioPlayer("DP-X1A", "Onkyo",
-
-         "DSD/FLAC/ALAC/WAV/AIFF/MQA/Ogg-Vorbis/MP3/AAC", "M3U/PLS/WPL");
-
-      Screen newScreen = new Screen("720x480", 40, 22);
-
-      MoviePlayer newMovieProduct = new MoviePlayer("DBPOWER MK101", "OracleProduction", newScreen,
-
-         MonitorType.LCD);
-
-      ArrayList<MultimediaControl> productList = new ArrayList<MultimediaControl>();
-
-      productList.add(newAudioProduct);
-
-      productList.add(newMovieProduct);
-
-      for (MultimediaControl p : productList) {
-
-         System.out.println(p);
-
-         p.play();
-
-         p.stop();
-
-         p.next();
-
-         p.previous();
-
-      }
-
-   }
-
-
    @FXML
-   void showDetails(ActionEvent event) {
-      saveToDb();
+   private TextArea displayProductionRecord;
+   @FXML
+   private TableView<Product> displayProductTblView;
+
+   ObservableList<Product> productLine = FXCollections.observableArrayList();
+   ObservableList<String> productNames = FXCollections.observableArrayList();
+   ArrayList<ProductionRecord> productionRun = new ArrayList<>();
+
+
+   final String JDBC_DRIVER = "org.h2.Driver";
+   final String DB_URL = "jdbc:h2:./res/HR";
+
+   //  Database credentials
+   final String USER = "";
+   final String PASS = "";
+
+   Connection conn = null;
+   Statement stmt = null  ;
+
+
+   /*
+    * executes all methods in controller
+    */
+   public void initialize() throws SQLException {
+      connectToDb();
+      produceCmbQuantity();
+      productCbItemType();
+      addProduct();
+
+      disconnect();
    }
+
+   /*
+    * connects to database and sets up H2 driver
+    */
+   public void connectToDb() {
+      try {
+         // STEP 1: Register JDBC driver
+         Class.forName(JDBC_DRIVER);
+
+         //STEP 2: Open a connection
+         conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+         //STEP 3: Execute a query
+         stmt = conn.createStatement();
+
+      } catch (ClassNotFoundException e) {
+         e.printStackTrace();
+
+      } catch (SQLException e) {
+         e.printStackTrace();
+      }
+   }
+
+   /*
+    * disconnects from database
+    */
+   public void disconnect(){
+         try {
+            //stmt.close();
+            conn.close();
+         } catch (SQLException ex) {
+            ex.printStackTrace();
+         }
+      }
+
+
+
+/*
 
    // connect to database, set up h2 driver
    public void saveToDb() {
-      final String JDBC_DRIVER = "org.h2.Driver";
-      final String DB_URL = "jdbc:h2:./res/HR";
-
-      //  Database credentials
-      final String USER = "";
-      final String PASS = "";
-      Connection conn = null;
-      Statement stmt = null;
-
 
       try {
          // STEP 1: Register JDBC driver
@@ -144,16 +131,17 @@ public class Controller {
          //STEP 3: Execute a query
          stmt = conn.createStatement();
 
-         //String productName = txtProductId.getText();
+
 
          // product state
-         String productType = "Audio";
-         String productManufacturer = "Apple";
-         String productName = "Ipod";
+         String productName = txtProductId.getText();
+         String productManufacturer = txtProductManufacturer.getText();
+         String productType = String.valueOf(productCbItemType.getValue());
 
-         // string instrts type, ma
+
+         // string inserts type, ma
          String insertSql = "INSERT INTO Product(type, manufacturer, name) "
-         + "VALUES ( '"+productType+"', '"+productManufacturer+"', '"+productName+"' )";
+            + "VALUES ( '"+productType+"', '"+productManufacturer+"', '"+productName+"' )";
 
          stmt.executeUpdate(insertSql);
          System.out.println(insertSql);
@@ -169,4 +157,87 @@ public class Controller {
          e.printStackTrace();
       }
    }
+
+*/
+
+
+   /*
+    * populate combobox in Production Log tab with 1-10
+    */
+   public void produceCmbQuantity() {
+      for (int count = 1; count <= 10; count++) {
+         produceCmbQuantity.getItems().add(String.valueOf(count));
+         produceCmbQuantity.setEditable(true);
+      }
+   }
+
+   /*
+    * populate choice-box in Product Line tab with ItemTypes
+    */
+   public void productCbItemType() {
+      for (ItemType it : ItemType.values()) {
+         //System.out.println(it + " " + it.code);
+         productCbItemType.getItems().add(it);
+      }
+   }
+
+
+   /*
+    * adds product into database
+    */
+   public void addProduct() throws SQLException {
+
+      connectToDb();
+
+      try{
+         String productName = txtProductId.getText();
+         String productManufacturer = txtProductManufacturer.getText();
+         String productType = String.valueOf(productCbItemType.getValue());
+         Product product = new Widget(productName, productManufacturer, productType);
+         // ObservableList that holds all products that can be produces with widget constructor
+         productLine.add(product);
+
+         String insertSql = "INSERT INTO Product(type, manufacturer, name) "
+            + "VALUES ( '"+productType+"', '"+productManufacturer+"', '"+productName+"' )";
+
+         stmt.executeUpdate(insertSql);
+         //System.out.println(insertSql);
+
+      } catch (SQLException e) {
+         e.printStackTrace();
+
+      }
+
+      disconnect();
+
+
+
+
+
+   }
+
+
+   // saves displayProduct to database and prints "Product added"
+   public void displayProduct() {
+      lblProductOutput.setText("Product Added");
+
+   }
+
+   // output for record production method (need to change name)
+   public void display2(ActionEvent actionEvent) {
+      lblOutput2.setText("(System.out.println)");
+   }
+
+
+
+
+   @FXML
+   void showDetails(ActionEvent event) {
+      connectToDb();
+   }
+
+
+
+
+
 }

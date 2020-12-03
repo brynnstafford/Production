@@ -44,11 +44,10 @@ public class ProductionRecord {
                            int itemCount){
       this.product = product;
       this.itemCount = itemCount;
-      // substring returns the the first 3 letters of the manufacturer
-      this.serialNumber = product.getManufacturer().substring(0,3)
-         + product.getType().code
-         + String.format("%05d", itemCount);
-      this.dateProduced = new Date();
+      this.serialNumber = product.getManufacturer().substring(0,3) // returns the the first 3 letters of the manufacturer
+         + product.getType().code // gets the two letter ItemType
+         + String.format("%05d", itemCount); // generates the unique serial num for each produced item
+      this.dateProduced = new Date(); // gets date
 
 
 
